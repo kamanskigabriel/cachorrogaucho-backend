@@ -22,14 +22,30 @@ const router = express.Router()
 //  ------------------------------------------------------------------------------------------
 
 //  Criar
-
+    router.post('/criar', (req,res) => {
+        const {nome, dono, idade, brinquedo} = req.body
+        if (!nome || !dono || !idade || !brinquedo){
+            res.send({message: "Por favor, informar as quedencias do seu pet"})
+            return
+        }
+        cachorro.push({nome, dono, idade, brinquedo})
+        res.send({message : "Cadastro concluido com sucesso"})
+    })
 //  ------------------------------------------------------------------------------------------
 
 //  Alterar
+    router.put('/alterar', (req,res) => {
 
+    })
 //  ------------------------------------------------------------------------------------------
 
 //  Deletar
+    router.delete("/deletar", (req, res) => {
+    const id = req.body.id
 
+    carros.splice(it => it.id === id, 1)
+    
+    res.send({mensage : "Deletado"})
+})
 //  ------------------------------------------------------------------------------------------
 export default router
